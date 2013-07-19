@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="q" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/node_modules/q/q.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/q/queue.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/node_modules/q/q.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/q/queue.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
