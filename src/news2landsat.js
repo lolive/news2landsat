@@ -5,7 +5,8 @@
 //var querystring = require('querystring');
 var http = require('http');
 var url = require('url');
-//var q = require('q');
+var Q = require('q');
+
 var port = process.env.port || 1337;
 var proxyOptions = {
     host: "192.168.254.1",
@@ -14,7 +15,7 @@ var proxyOptions = {
         'Proxy-Authorization': 'Basic ' + new Buffer("OLIVIER.ROSSEL" + ':' + "7512OLRO*").toString('base64')
     }
 }
-var proxyEnabled = false;
+var proxyEnabled = true;
 
 function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, theUrl, postData) {
     if (proxyEnabled) {
@@ -60,24 +61,29 @@ function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, the
     req.end();
 }
 
-function articleContent(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
-    return function callBoilerpipe(inputUrl) {
+function articleContent(inputUrl) {
+    var qq = Q.defer();
+    function callBoilerpipe(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
         var boilerpipeInputUrl = "http://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=text&extractImages=&url=" + /*encodeURIComponent(inputUrl)*/inputUrl;
         sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", boilerpipeInputUrl);
-    }
+    } (qq.resolve, qq.reject);
+    return qq.promise;
 }
 
-function resolveLocations(whatToDoWithClavinResult, whatToDoWithClavinError) {
-    var clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations";
-    return function callClavin(articleText) {
+function resolveLocations(articleText) {
+    var qq = Q.defer();
+    function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
+        var clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations";
         sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", clavinUrl, articleText);
-    }
+    } (qq.resolve, qq.reject);
+    return qq.promise;
 }
 exports.resolveLocations=resolveLocations;
 
 
-function annotateText(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
-    return function (geonames, articleText) {
+function annotateText(geonames, articleText) {
+    var qq = Q.defer();
+    function annotateLocations(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
         try {
             var annotatedText = articleText;
             if (geonames) {
@@ -95,7 +101,8 @@ function annotateText(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
         } catch (e) {
             whatToDoOnAnnotationError(e);
         }
-    }
+    } (qq.resolve, qq.reject);
+    return qq.promise;
 }
 exports.annotateText = annotateText;
 
@@ -128,11 +135,13 @@ http.createServer(function (proxyReq, proxyResp) {
         proxyResp.end();
     }
 
-    var toHtml = annotateText(sendResultBackToBrowser, sendErrorBackToBrowser);
-    var toLocations = resolveLocations(toHtml, sendErrorBackToBrowser);
-    var toArticle = articleContent(toLocations, sendErrorBackToBrowser);
+//    var toHtml = annotateText(sendResultBackToBrowser, sendErrorBackToBrowser);
+//    var toLocations = resolveLocations(toHtml, sendErrorBackToBrowser);
+//    var toArticle = articleContent(toLocations, sendErrorBackToBrowser);
+//
+//    var articleToHtml = toArticle(articleSrc);
 
-    var articleToHtml = toArticle(articleSrc);
+    articleContent(articleSrc).then(resolveLocations).then(annotateText).fail(sendErrorBackToBrowser);
 
 
 //    var destParams = url.parse(URL);
