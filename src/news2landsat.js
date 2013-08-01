@@ -104,7 +104,7 @@ function annotateText(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
                     });
                 }
             }
-            return whatToDoWithAnnotatedText(annotatedText);
+            return whatToDoWithAnnotatedText(annotatedText, geonames);
         } catch (e) {
             whatToDoOnAnnotationError(e);
         }
