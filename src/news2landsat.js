@@ -49,7 +49,7 @@ function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, the
 
         res.on('end', function () {
             //proxyResp.end();
-            whatToDoWithResponse(responseText, postData);
+            whatToDoWithResponse([responseText, postData]);
         });
     });
 
@@ -145,7 +145,7 @@ http.createServer(function (proxyReq, proxyResp) {
 //
 //    var articleToHtml = toArticle(articleSrc);
 
-    articleContent(articleSrc).then(resolveLocations).then(annotateText).fail(sendErrorBackToBrowser);
+    articleContent(articleSrc).spread(resolveLocations).spread(annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
 
 
 //    var destParams = url.parse(URL);
