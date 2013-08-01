@@ -114,7 +114,9 @@ function annotateLocation(text, name, long, lat) {
 
     var replacementText = "$1<a href=\"http://localhost/sparql2mapWidget/GoogleEarth/index.xhtml?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+ "\">_" + "$2" + "_</a>$3";
     var regexp = new RegExp("([^_]*)" + "("+name+")" + "([^_]*)", "gi");
-    return text.replace(regexp, replacementText);
+    if(text)
+        return text.replace(regexp, replacementText);
+
 }
 exports.annotateLocation = annotateLocation;
 
