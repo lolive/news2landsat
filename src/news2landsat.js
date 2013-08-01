@@ -44,7 +44,7 @@ function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, the
         reqOptions.port = theParsedUrl.port;
         reqOptions.path = theParsedUrl.path;
         reqOptions.headers = {};
-    }
+	}
     if (postData)
         reqOptions.headers['Content-Length'] = postData.length;
 
@@ -133,21 +133,85 @@ http.createServer(function (proxyReq, proxyResp) {
         proxyResp.end();
     }
 
-    function sendResultBackToBrowser(text) {
-        console.log(text);
-        proxyResp.setHeader("Content-Type", "text/html; charset=utf-8");
-        proxyResp.writeHead(200);
-        proxyResp.write(text);
-        proxyResp.end();
-    }
+    function sendResultBackToBrowser(text, geonames) {		
+		if (text.substr(0,6) != "<html>"){
+			var dt = new Date();		
+			var textTitle = text.substr(0, text.indexOf('\n')) + "_" + dt.toISOString();
+			var formattedText = "<html>\n<head>\n<title>" + textTitle + "</title>\n</head>\n<body>\n<p>" + text.replace(/\n/g, '</p>\n<p>') + "</p>\n</body>\n</html>";
+			var file = formattedText + "\n<!--url:" + articleSrc + "\ngeonames:" + geonames + "-->"
+			
+			request({
+				uri: urlStoreArticle + textTitle + ".html",
+				method: "PUT",
+				proxy: theProxy,
+				followAllRedirects: true,
+				body: file,
+				headers: {
+					'Content-Type': 'text/html',
+					'Content-Length': file.length,
+					'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
+					'Connection': 'keep-alive'
+				}
+			}, function(error, response, body) {
+				if (error)
+					sendErrorBackToBrowser(error);
+				else
+					request({
+						uri: updateWebSemanticTree,
+						method: "GET",
+						headers: {
+							'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
+						}
+					}, function(error, response, body) {
+						if (error)
+							sendErrorBackToBrowser(error);
+						else
+							var retBody = body.substr(1, body.length-1);
+							var newBody = JSON.parse(body);
+							var newArticle = {
+								text: textTitle,
+								leaf: true,
+								icon: "/sitools/common/res/images/icons/invalid.png",
+								sync: false,
+								link: "/fr/" + textTitle + ".html"
+							};
+							
+							for (var i = 0; i < newBody.length; i++) {
+								if (newBody[i].text == "Articles"){
+									newBody[i].children.push(newArticle);
+								}
+							}
 
+							request({
+								uri: updateWebSemanticTree,
+								method: "PUT",
+								followAllRedirects: true,
+								json: newBody,
+								headers: {
+									'Content-Type': 'text/json',
+									'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
+									'Connection': 'keep-alive'
+								}
+							}, function(error, response, body) {
+								if (error)
+									sendErrorBackToBrowser(error);
+							});
+					});
+			});
+			
+			proxyResp.setHeader("Content-Type", "text/html; charset=utf-8");
+			proxyResp.writeHead(200);
+			proxyResp.write(formattedText);
+			proxyResp.end();
+		}
+    }
+	
     var toHtml = annotateText(sendResultBackToBrowser, sendErrorBackToBrowser);
     var toLocations = resolveLocations(toHtml, sendErrorBackToBrowser);
     var toArticle = articleContent(toLocations, sendErrorBackToBrowser);
-
+	
     var articleToHtml = toArticle(articleSrc);
-
-
+	
 //    var destParams = url.parse(URL);
 //
 //    var reqOptions = {
