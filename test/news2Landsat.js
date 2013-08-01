@@ -36,12 +36,12 @@ exports['geoname2annotatedText'] = function (test) {
         test.fail("The function failed to annotate text. Error is: " + e.message);
         test.done();
     };
-    var text = news2landsat.annotateText(onAnnotationSuccess, onAnnotationFailed)(
+    news2landsat.annotateText(
         JSON.stringify({resolvedLocations: [
             {inputName: "Paris", geoname: {longitude: 1, latitude: 2}},
             {inputName: "Berlin", geoname: {longitude: 3, latitude: 4}}
-         ]
-        }), "Paris and Berlin are beautiful");
+        ]
+        }), "Paris and Berlin are beautiful").fail(onAnnotationFailed).then(onAnnotationSuccess);
 }
 
 exports['resolveLocationViaClavin'] = function(test){
@@ -82,6 +82,6 @@ exports['resolveLocationViaClavin'] = function(test){
           test.fail("Clavin could not achieve its work. Error is: "+e);
          test.done();
      }
-    news2landsat.resolveLocations(onClavinReturn, onClavinError)("Paris and Berlin are beautiful");
- }
+    news2landsat.resolveLocations("Paris and Berlin are beautiful").then(onClavinReturn).fail(onClavinError);
+}
 
