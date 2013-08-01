@@ -80,12 +80,13 @@ function resolveLocations(articleText) {
     callClavin(qq.resolve, qq.reject);
     return qq.promise;
 }
+
 exports.resolveLocations=resolveLocations;
 
 
 function annotateText(geonames, articleText) {
     var qq = Q.defer();
-    function annotateLocations(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
+    var annotateLocations = function (whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
         try {
             var annotatedText = articleText;
             if (geonames) {
@@ -103,7 +104,8 @@ function annotateText(geonames, articleText) {
         } catch (e) {
             whatToDoOnAnnotationError(e);
         }
-    } (qq.resolve, qq.reject);
+    };
+    annotateLocations(qq.resolve, qq.reject);
     return qq.promise;
 }
 exports.annotateText = annotateText;
