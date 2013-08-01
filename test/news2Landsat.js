@@ -82,6 +82,6 @@ exports['resolveLocationViaClavin'] = function(test){
           test.fail("Clavin could not achieve its work. Error is: "+e);
          test.done();
      }
-    news2landsat.resolveLocations("Paris and Berlin are beautiful").then(onClavinReturn).fail(onClavinError);
+    news2landsat.resolveLocations("Paris and Berlin are beautiful").spread(onClavinReturn).fail(onClavinError);
 }
 
