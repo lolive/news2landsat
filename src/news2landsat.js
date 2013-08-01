@@ -5,8 +5,16 @@
 //var querystring = require('querystring');
 var http = require('http');
 var url = require('url');
+var request = require('request');
+var servSparql = "sitools.akka.eu";
+var urlStoreArticle = "http://localhost:8183/sitools/datastorage/user/semantic-storage/fr/";
+var updateWebSemanticTree = "http://localhost:8183/sitools/datastorage/user/semantic-storage/json/data_fr.json";
+var logSitools = {
+	id: "admin",
+	pass: "sitoolsisthebest"
+}
 //var q = require('q');
-var port = process.env.port || 1337;
+var port = process.env.port || 8185;
 var proxyOptions = {
     host: "192.168.254.1",
     port: 9090,
@@ -15,6 +23,11 @@ var proxyOptions = {
     }
 }
 var proxyEnabled = false;
+
+var theProxy;
+if (proxyEnabled) {
+	theProxy = "http://username:password@proxy2.akka.eu:9090";
+}
 
 function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, theUrl, postData) {
     if (proxyEnabled) {
