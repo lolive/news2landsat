@@ -63,10 +63,11 @@ function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, the
 
 function articleContent(inputUrl) {
     var qq = Q.defer();
-    function callBoilerpipe(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
+    var callBoilerpipe = function (whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
         var boilerpipeInputUrl = "http://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=text&extractImages=&url=" + /*encodeURIComponent(inputUrl)*/inputUrl;
         sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", boilerpipeInputUrl);
-    } (qq.resolve, qq.reject);
+    };
+    callBoilerpipe(qq.resolve, qq.reject);
     return qq.promise;
 }
 
