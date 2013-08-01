@@ -73,10 +73,11 @@ function articleContent(inputUrl) {
 
 function resolveLocations(articleText) {
     var qq = Q.defer();
-    function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
+    var callClavin = function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
         var clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations";
         sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", clavinUrl, articleText);
-    } (qq.resolve, qq.reject);
+    }
+    callClavin(qq.resolve, qq.reject);
     return qq.promise;
 }
 exports.resolveLocations=resolveLocations;
