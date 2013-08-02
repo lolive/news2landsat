@@ -15,18 +15,9 @@ var Q = require('q');
 var conf = require('./conf.js');
 var httpReq = require('./httpReq.js');
 var boilerPipe = require('./boilerPipe.js');
+var clavin = require('./clavin.js');
 
-function resolveLocations(articleText) {
-    var qq = Q.defer();
-    var callClavin = function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
-        httpReq.sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", conf.clavinUrl, articleText);
-    }
-    callClavin(qq.resolve, qq.reject);
-    return qq.promise;
-}
-
-exports.resolveLocations=resolveLocations;
-
+exports.resolveLocations=clavin.resolveLocations;
 
 function annotateText(geonames, articleText) {
     var qq = Q.defer();
@@ -90,7 +81,7 @@ http.createServer(function (proxyReq, proxyResp) {
 //
 //    var articleToHtml = toArticle(articleSrc);
 
-    boilerPipe.articleContent(articleSrc).spread(resolveLocations).spread(annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
+    boilerPipe.articleContent(articleSrc).spread(clavin.resolveLocations).spread(annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
 
 
 //    var destParams = url.parse(URL);
