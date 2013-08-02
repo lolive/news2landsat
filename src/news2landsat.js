@@ -2,126 +2,27 @@
  LICENSE : https://github.com/premist/node-crossdomain-proxy/blob/master/LICENSE
  */
 
+/****************************************************************************
+* Includes																	*
+****************************************************************************/
+// NodeJS Modules
 //var querystring = require('querystring');
 var http = require('http');
 var url = require('url');
+
+// Personnal librairies
 var Q = require('q');
+var conf = require('./conf.js');
+var httpReq = require('./httpReq.js');
+var boilerPipe = require('./boilerPipe.js');
+var clavin = require('./clavin.js');
+var annotate = require('./annotate.js');
 
-var port = process.env.port || 1337;
-var proxyOptions = {
-    host: "192.168.254.1",
-    port: 9090,
-    headers: {
-        'Proxy-Authorization': 'Basic ' + new Buffer("OLIVIER.ROSSEL" + ':' + "7512OLRO*").toString('base64')
-    }
-}
-var proxyEnabled = true;
-
-function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, theUrl, postData) {
-    if (proxyEnabled) {
-        var reqOptions = {};
-        reqOptions.host = proxyOptions.host;
-        reqOptions.port = proxyOptions.port;
-        reqOptions.path = theUrl;
-        reqOptions.headers = {};
-        reqOptions.headers['Proxy-Authorization'] = proxyOptions.headers['Proxy-Authorization'];
-    } else {
-        var theParsedUrl = url.parse(theUrl);
-        var reqOptions = {};
-        reqOptions.host = theParsedUrl.hostname;
-        reqOptions.port = theParsedUrl.port;
-        reqOptions.path = theParsedUrl.path;
-        reqOptions.headers = {};
-    }
-    if (postData)
-        reqOptions.headers['Content-Length'] = postData.length;
-
-    reqOptions.method = theMethod;
-
-
-    var req = http.request(reqOptions, function (res) {
-        var responseText = "";
-
-        res.on('data', function (chunk) {
-            //proxyResp.write(chunk);
-            responseText += chunk;
-        });
-
-        res.on('end', function () {
-            //proxyResp.end();
-            whatToDoWithResponse([responseText, postData]);
-        });
-    });
-
-    req.on('error', function (e) {
-        whatToDoWithError(e);
-    });
-    if (postData)
-        req.write(postData);
-    req.end();
-}
-
-function articleContent(inputUrl) {
-    var qq = Q.defer();
-    var callBoilerpipe = function (whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
-        var boilerpipeInputUrl = "http://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=text&extractImages=&url=" + /*encodeURIComponent(inputUrl)*/inputUrl;
-        sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", boilerpipeInputUrl);
-    };
-    callBoilerpipe(qq.resolve, qq.reject);
-    return qq.promise;
-}
-
-function resolveLocations(articleText) {
-    var qq = Q.defer();
-    var callClavin = function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
-        var clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations";
-        sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", clavinUrl, articleText);
-    }
-    callClavin(qq.resolve, qq.reject);
-    return qq.promise;
-}
-
-exports.resolveLocations=resolveLocations;
-
-
-function annotateText(geonames, articleText) {
-    var qq = Q.defer();
-    var annotateLocations = function (whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
-        try {
-            var annotatedText = articleText;
-            if (geonames) {
-                var locations = JSON.parse(geonames);
-                if (locations.resolvedLocations) {
-                    locations.resolvedLocations.forEach(function (resolvedLocation) {
-                        var name = resolvedLocation.inputName;
-                        var long = resolvedLocation.geoname.longitude;
-                        var lat = resolvedLocation.geoname.latitude;
-                        annotatedText = annotateLocation(annotatedText, name, long, lat);
-                    });
-                }
-            }
-            return whatToDoWithAnnotatedText(annotatedText);
-        } catch (e) {
-            whatToDoOnAnnotationError(e);
-        }
-    };
-    annotateLocations(qq.resolve, qq.reject);
-    return qq.promise;
-}
-exports.annotateText = annotateText;
-
-function annotateLocation(text, name, long, lat) {
-
-    var replacementText = "$1<a href=\"http://localhost/sparql2mapWidget/GoogleEarth/index.xhtml?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+ "\">_" + "$2" + "_</a>$3";
-    var regexp = new RegExp("([^_]*)" + "("+name+")" + "([^_]*)", "gi");
-    if(text)
-        return text.replace(regexp, replacementText);
-
-}
-exports.annotateLocation = annotateLocation;
+exports.resolveLocations=clavin.resolveLocations;
+exports.annotateText = annotate.annotateText;
+exports.annotateLocation = annotate.annotateLocation;
 
 http.createServer(function (proxyReq, proxyResp) {
-
 
     var params = url.parse(proxyReq.url, true);
     var articleSrc = params.query.src;
@@ -147,7 +48,7 @@ http.createServer(function (proxyReq, proxyResp) {
 //
 //    var articleToHtml = toArticle(articleSrc);
 
-    articleContent(articleSrc).spread(resolveLocations).spread(annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
+    boilerPipe.articleContent(articleSrc).spread(clavin.resolveLocations).spread(annotate.annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
 
 
 //    var destParams = url.parse(URL);
@@ -270,4 +171,4 @@ http.createServer(function (proxyReq, proxyResp) {
 //
 
 
-}).listen(port);
+}).listen(conf.port);
