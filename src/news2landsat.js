@@ -13,55 +13,12 @@ var url = require('url');
 // Personnal librairies
 var Q = require('q');
 var conf = require('./conf.js');
-
-function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, theUrl, postData) {
-    if (conf.proxyEnabled) {
-        var reqOptions = {};
-        reqOptions.host = conf.proxyOptions.host;
-        reqOptions.port = conf.proxyOptions.port;
-        reqOptions.path = theUrl;
-        reqOptions.headers = {};
-        reqOptions.headers['Proxy-Authorization'] = conf.proxyOptions.headers['Proxy-Authorization'];
-    } else {
-        var theParsedUrl = url.parse(theUrl);
-        var reqOptions = {};
-        reqOptions.host = theParsedUrl.hostname;
-        reqOptions.port = theParsedUrl.port;
-        reqOptions.path = theParsedUrl.path;
-        reqOptions.headers = {};
-    }
-    if (postData)
-        reqOptions.headers['Content-Length'] = postData.length;
-
-    reqOptions.method = theMethod;
-
-
-    var req = http.request(reqOptions, function (res) {
-        var responseText = "";
-
-        res.on('data', function (chunk) {
-            //proxyResp.write(chunk);
-            responseText += chunk;
-        });
-
-        res.on('end', function () {
-            //proxyResp.end();
-            whatToDoWithResponse([responseText, postData]);
-        });
-    });
-
-    req.on('error', function (e) {
-        whatToDoWithError(e);
-    });
-    if (postData)
-        req.write(postData);
-    req.end();
-}
+var httpReq = require('./httpReq.js');
 
 function articleContent(inputUrl) {
     var qq = Q.defer();
     var callBoilerpipe = function (whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
-        sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", conf.boilerpipeInputUrl + /*encodeURIComponent(inputUrl)*/inputUrl);
+        httpReq.sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", conf.boilerpipeInputUrl + /*encodeURIComponent(inputUrl)*/inputUrl);
     };
     callBoilerpipe(qq.resolve, qq.reject);
     return qq.promise;
@@ -70,7 +27,7 @@ function articleContent(inputUrl) {
 function resolveLocations(articleText) {
     var qq = Q.defer();
     var callClavin = function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
-        sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", conf.clavinUrl, articleText);
+        httpReq.sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", conf.clavinUrl, articleText);
     }
     callClavin(qq.resolve, qq.reject);
     return qq.promise;
