@@ -14,15 +14,7 @@ var url = require('url');
 var Q = require('q');
 var conf = require('./conf.js');
 var httpReq = require('./httpReq.js');
-
-function articleContent(inputUrl) {
-    var qq = Q.defer();
-    var callBoilerpipe = function (whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
-        httpReq.sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", conf.boilerpipeInputUrl + /*encodeURIComponent(inputUrl)*/inputUrl);
-    };
-    callBoilerpipe(qq.resolve, qq.reject);
-    return qq.promise;
-}
+var boilerPipe = require('./boilerPipe.js');
 
 function resolveLocations(articleText) {
     var qq = Q.defer();
@@ -98,7 +90,7 @@ http.createServer(function (proxyReq, proxyResp) {
 //
 //    var articleToHtml = toArticle(articleSrc);
 
-    articleContent(articleSrc).spread(resolveLocations).spread(annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
+    boilerPipe.articleContent(articleSrc).spread(resolveLocations).spread(annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
 
 
 //    var destParams = url.parse(URL);
