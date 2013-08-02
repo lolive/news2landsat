@@ -2,29 +2,26 @@
  LICENSE : https://github.com/premist/node-crossdomain-proxy/blob/master/LICENSE
  */
 
+/****************************************************************************
+* Includes																	*
+****************************************************************************/
+// NodeJS Modules
 //var querystring = require('querystring');
 var http = require('http');
 var url = require('url');
-var Q = require('q');
 
-var port = process.env.port || 1337;
-var proxyOptions = {
-    host: "192.168.254.1",
-    port: 9090,
-    headers: {
-        'Proxy-Authorization': 'Basic ' + new Buffer("OLIVIER.ROSSEL" + ':' + "7512OLRO*").toString('base64')
-    }
-}
-var proxyEnabled = true;
+// Personnal librairies
+var Q = require('q');
+var conf = require('./conf.js');
 
 function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, theUrl, postData) {
-    if (proxyEnabled) {
+    if (conf.proxyEnabled) {
         var reqOptions = {};
-        reqOptions.host = proxyOptions.host;
-        reqOptions.port = proxyOptions.port;
+        reqOptions.host = conf.proxyOptions.host;
+        reqOptions.port = conf.proxyOptions.port;
         reqOptions.path = theUrl;
         reqOptions.headers = {};
-        reqOptions.headers['Proxy-Authorization'] = proxyOptions.headers['Proxy-Authorization'];
+        reqOptions.headers['Proxy-Authorization'] = conf.proxyOptions.headers['Proxy-Authorization'];
     } else {
         var theParsedUrl = url.parse(theUrl);
         var reqOptions = {};
@@ -64,8 +61,7 @@ function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, the
 function articleContent(inputUrl) {
     var qq = Q.defer();
     var callBoilerpipe = function (whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError) {
-        var boilerpipeInputUrl = "http://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=text&extractImages=&url=" + /*encodeURIComponent(inputUrl)*/inputUrl;
-        sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", boilerpipeInputUrl);
+        sendHttpRequest(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeError, "GET", conf.boilerpipeInputUrl + /*encodeURIComponent(inputUrl)*/inputUrl);
     };
     callBoilerpipe(qq.resolve, qq.reject);
     return qq.promise;
@@ -74,8 +70,7 @@ function articleContent(inputUrl) {
 function resolveLocations(articleText) {
     var qq = Q.defer();
     var callClavin = function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
-        var clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations";
-        sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", clavinUrl, articleText);
+        sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", conf.clavinUrl, articleText);
     }
     callClavin(qq.resolve, qq.reject);
     return qq.promise;
@@ -121,7 +116,6 @@ function annotateLocation(text, name, long, lat) {
 exports.annotateLocation = annotateLocation;
 
 http.createServer(function (proxyReq, proxyResp) {
-
 
     var params = url.parse(proxyReq.url, true);
     var articleSrc = params.query.src;
@@ -270,4 +264,4 @@ http.createServer(function (proxyReq, proxyResp) {
 //
 
 
-}).listen(port);
+}).listen(conf.port);
