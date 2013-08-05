@@ -13,7 +13,6 @@ var url = require('url');
 // Personnal librairies
 var Q = require('q');
 var conf = require('./conf.js');
-var httpReq = require('./httpReq.js');
 var boilerPipe = require('./boilerPipe.js');
 var clavin = require('./clavin.js');
 var annotate = require('./annotate.js');
