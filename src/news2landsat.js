@@ -17,6 +17,7 @@ var httpReq = require('./httpReq.js');
 var boilerPipe = require('./boilerPipe.js');
 var clavin = require('./clavin.js');
 var annotate = require('./annotate.js');
+var request = require('./request.js');
 
 exports.resolveLocations=clavin.resolveLocations;
 exports.annotateText = annotate.annotateText;
