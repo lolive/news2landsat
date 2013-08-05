@@ -9,5 +9,7 @@ exports.proxyOptions = {
 exports.proxyEnabled = true;
 
 exports.boilerpipeInputUrl = "http://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=text&extractImages=&url=";
-exports.clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations";
+exports.clavinUrl = "http://clavin.berico.us/clavin-web/Services/GeoExtract/ResolvedLocations";
+
+// exports.clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations"; OLD
 
