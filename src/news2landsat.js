@@ -7,8 +7,8 @@ var http = require('http');
 var url = require('url');
 var request = require('request');
 var servSparql = "sitools.akka.eu";
-var urlStoreArticle = "http://localhost:8183/sitools/datastorage/user/semantic-storage/fr/";
-var updateWebSemanticTree = "http://localhost:8183/sitools/datastorage/user/semantic-storage/json/data_fr.json";
+var urlStoreArticle = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/fr/";
+var updateWebSemanticTree = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/json/data_fr.json";
 var logSitools = {
 	id: "admin",
 	pass: "sitoolsisthebest"
@@ -22,11 +22,11 @@ var proxyOptions = {
         'Proxy-Authorization': 'Basic ' + new Buffer("OLIVIER.ROSSEL" + ':' + "7512OLRO*").toString('base64')
     }
 }
-var proxyEnabled = false;
+var proxyEnabled = true;
 
 var theProxy;
 if (proxyEnabled) {
-	theProxy = "http://username:password@proxy2.akka.eu:9090";
+	theProxy = "http://OLIVIER.ROSSEL:7512OLRO*@proxy2.akka.eu:9090";
 }
 
 function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, theUrl, postData) {
@@ -81,7 +81,7 @@ function articleContent(whatToDoWithBoilerpipeResult, whatToDoWithBoilerpipeErro
 }
 
 function resolveLocations(whatToDoWithClavinResult, whatToDoWithClavinError) {
-    var clavinUrl = "http://ec2-23-22-172-90.compute-1.amazonaws.com:8080/clavin-web/Services/GeoExtract/ResolvedLocations";
+    var clavinUrl = "http://clavin.berico.us/clavin-web/Services/GeoExtract/ResolvedLocations";
     return function callClavin(articleText) {
         sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", clavinUrl, articleText);
     }
@@ -114,7 +114,7 @@ exports.annotateText = annotateText;
 
 function annotateLocation(text, name, long, lat) {
 
-    var replacementText = "$1<a href=\"http://localhost/sparql2mapWidget/GoogleEarth/index.xhtml?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+ "\">_" + "$2" + "_</a>$3";
+    var replacementText = "$1<a href=\"http://sitools.akka.eu/sparql2mapWidget/GoogleEarth/index.xhtml?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+ "\">_" + "$2" + "_</a>$3";
     var regexp = new RegExp("([^_]*)" + "("+name+")" + "([^_]*)", "gi");
     return text.replace(regexp, replacementText);
 }
