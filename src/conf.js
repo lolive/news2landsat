@@ -1,4 +1,4 @@
-exports.port = process.env.port || 1337;
+exports.port = process.env.port || 8185;
 exports.proxyOptions = {
     host: "192.168.254.1",
     port: 9090,
