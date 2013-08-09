@@ -22,6 +22,11 @@ exports.sendHttpRequest = function (whatToDoWithResponse, whatToDoWithError, the
 		}
 		reqOptions.headers['Content-Length'] = postData.length;
 	}
+	
+	if (theUrl.indexOf('sitools/datastorage') != -1) {
+		reqOptions.headers['Authorization'] = 'Basic ' + new Buffer(conf.logSitools.id + ':' + conf.logSitools.pass).toString('base64');
+		reqOptions.headers['Connection'] = 'keep-alive';
+	}
 
 	request(reqOptions, function(error, response, body) {
 		if (error) {
