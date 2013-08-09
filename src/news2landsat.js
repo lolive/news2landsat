@@ -16,6 +16,7 @@ var boilerPipe = require('./boilerPipe.js');
 var clavin = require('./clavin.js');
 var annotate = require('./annotate.js');
 var request = require('./request.js');
+var articleSI2 = require('./createArticle.js');
 
 exports.resolveLocations=clavin.resolveLocations;
 exports.annotateText = annotate.annotateText;
@@ -33,14 +34,15 @@ http.createServer(function (proxyReq, proxyResp) {
         proxyResp.end();
     }
 
-    function sendResultBackToBrowser(text) {
-        console.log(text);
+    function sendResultBackToBrowser(validCreation, articleText) {
+        console.log(articleText);
+		
         proxyResp.setHeader("Content-Type", "text/html; charset=utf-8");
         proxyResp.writeHead(200);
-        proxyResp.write(text);
+        proxyResp.write(articleText);
         proxyResp.end();
     }
 
-    boilerPipe.articleContent(articleSrc).spread(clavin.resolveLocations).spread(annotate.annotateText).then(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
+    boilerPipe.articleContent(articleSrc).spread(clavin.resolveLocations).spread(annotate.annotateText).then(articleSI2.createSiToolsArticle).spread(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
 
 }).listen(conf.port);
