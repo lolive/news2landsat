@@ -4,11 +4,27 @@
     <list default="true" id="2ce5d530-3d7e-43af-9126-331ed76a05c2" name="Default" comment="" />
     <ignored path="news2landsat.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/news2landsat.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1374013006055" ignored="false" />
-    <file path="/fragment.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1373903496647" ignored="false" />
+    <file path="/news2landsat.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377163472012" ignored="false" />
+    <file path="/fragment.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377099203569" ignored="false" />
     <file path="/a.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1373879714603" ignored="false" />
-    <file path="/news2Landsat.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1374012749913" ignored="false" />
-    <file path="/a.dummy" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1374012708854" ignored="false" />
+    <file path="/news2Landsat.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377101614615" ignored="false" />
+    <file path="/a.dummy" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377008832853" ignored="false" />
+    <file path="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/uri.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1376988667971" ignored="false" />
+    <file path="$PROJECT_DIR$/node_modules/request/node_modules/hawk/lib/browser.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1376988667971" ignored="false" />
+    <file path="/boilerPipe.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377095883688" ignored="false" />
+    <file path="/request.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377098881499" ignored="false" />
+    <file path="/clavin.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377161615987" ignored="false" />
+    <file path="/annotate.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377101307296" ignored="false" />
+    <file path="/conf.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377010443093" ignored="false" />
+    <file path="/createArticle.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377077086531" ignored="false" />
+    <file path="/updateWebSemanticTree.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377077541714" ignored="false" />
+    <file path="/getWebSemanticTree.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377077903639" ignored="false" />
+    <file path="/qify.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377094477725" ignored="false" />
+    <file path="/server.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377079697208" ignored="false" />
+    <file path="/httpReq.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377093235213" ignored="false" />
+    <file path="/AThenB.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377099288150" ignored="false" />
+    <file path="/testPerso_BoilerPipeThenClavin.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377099597455" ignored="false" />
+    <file path="/testPerso_AThenB.js" changelist="2ce5d530-3d7e-43af-9126-331ed76a05c2" time="1377178200439" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +44,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -64,7 +81,6 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -74,21 +90,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="news2landsat.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="news2landsat.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/news2landsat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="27" selection-start="503" selection-end="503" vertical-scroll-proportion="0.29411766">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="35" column="19" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news2landsat.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/news2landsat.iml">
+      <file leaf-file-name="q.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/q/q.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="17" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
+            <state line="114" column="50" selection-start="3397" selection-end="3397" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clavin.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/clavin.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="request.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/request.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="41" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -97,70 +129,52 @@
       <file leaf-file-name="news2Landsat.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/news2Landsat.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="130" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.0">
+            <state line="5" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assert.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/lib/assert.js">
+      <file leaf-file-name="boilerPipe.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/boilerPipe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="350" column="10" selection-start="11246" selection-end="11246" vertical-scroll-proportion="0.0">
+            <state line="8" column="0" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assert.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/assert.js">
+      <file leaf-file-name="testPerso_AThenB.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/testPerso_AThenB.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="29" selection-start="2544" selection-end="2544" vertical-scroll-proportion="0.0">
+            <state line="59" column="40" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.73740053">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="core.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/lib/core.js">
+      <file leaf-file-name="module.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="0" selection-start="4179" selection-end="4179" vertical-scroll-proportion="0.0">
+            <state line="498" column="0" selection-start="13959" selection-end="13959" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fs.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/fs.js">
+      <file leaf-file-name="timers.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/timers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="3519" selection-end="3519" vertical-scroll-proportion="0.0">
+            <state line="114" column="0" selection-start="3567" selection-end="3567" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nodeunit-intellij-starter.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Temp/nodeunit-intellij-starter.js">
+      <file leaf-file-name="conf.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="328" column="0" selection-start="11603" selection-end="11603" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="async.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/deps/async.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="152" column="0" selection-start="3976" selection-end="3976" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/lib/utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="0" selection-start="1594" selection-end="1594" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -176,9 +190,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/appli/news2landsat.js" />
+        <option value="$PROJECT_DIR$/src/createArticle.js" />
+        <option value="$PROJECT_DIR$/src/updateWebSemanticTree.js" />
+        <option value="$PROJECT_DIR$/test/updateWebSemanticTree.js" />
+        <option value="$PROJECT_DIR$/test/getWebSemanticTree.js" />
+        <option value="$PROJECT_DIR$/src/server.js" />
+        <option value="$PROJECT_DIR$/src/qify.js" />
+        <option value="$PROJECT_DIR$/src/httpReq.js" />
+        <option value="$PROJECT_DIR$/src/boilerPipe.js" />
+        <option value="$PROJECT_DIR$/src/AThenB.js" />
+        <option value="$PROJECT_DIR$/src/testPerso_BoilerPipeThenClavin.js" />
+        <option value="$PROJECT_DIR$/src/annotate.js" />
         <option value="$PROJECT_DIR$/test/news2Landsat.js" />
+        <option value="$PROJECT_DIR$/src/request.js" />
+        <option value="$PROJECT_DIR$/src/clavin.js" />
         <option value="$PROJECT_DIR$/src/news2landsat.js" />
+        <option value="$PROJECT_DIR$/src/testPerso_AThenB.js" />
       </list>
     </option>
   </component>
@@ -440,7 +467,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -456,20 +482,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="news2landsat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news2landsat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news2landsat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news2landsat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -477,10 +489,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="news2landsat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news2landsat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="news2landsat" />
@@ -498,10 +506,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="news2landsat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="news2landsat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -509,8 +513,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news2landsat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news2landsat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news2landsat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="news2landsat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="q" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -522,21 +559,52 @@
     <property name="options.lastSelected" value="JavaScript.Libraries" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/news2Landsat.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/boilerPipe.js" />
     <property name="project.structure.side.proportion" value="0.27141133" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.news2landsat.js">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\news2landsat\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.testPerso_AThenB.js">
     <configuration default="false" name="news2Landsat.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="news2Landsat.js" working-dir="$PROJECT_DIR$/test">
       <RunnerSettings RunnerId="NodeJS.debug" />
       <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <method />
+    </configuration>
+    <configuration default="false" name="getWebSemanticTree.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="getWebSemanticTree.js" working-dir="$PROJECT_DIR$/test">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="news2landsat.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="src/news2landsat.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testPerso_BoilerPipeThenClavin.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="testPerso_BoilerPipeThenClavin.js" working-dir="$PROJECT_DIR$/src">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testPerso_AThenB.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="testPerso_AThenB.js" working-dir="$PROJECT_DIR$/src">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -563,9 +631,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="$PROJECT_DIR$">
-      <method />
-    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -577,6 +642,9 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -615,14 +683,21 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="news2landsat.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="src/news2landsat.js" working-dir="$PROJECT_DIR$">
-      <RunnerSettings RunnerId="NodeJS.debug" />
-      <RunnerSettings RunnerId="NodeJS.run" />
-      <ConfigurationWrapper RunnerId="NodeJS.debug" />
-      <ConfigurationWrapper RunnerId="NodeJS.run" />
+    <configuration default="false" name="Testing Landsat" type="NodeunitConfigurationType" factoryName="Nodeunit">
+      <setting name="nodePath" value="C:/Program Files/nodejs/node" />
+      <envs />
+      <setting name="passParentEnvVars" value="true" />
+      <setting name="nodeunitModuleDir" value="$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="testType" value="DIRECTORY" />
+      <setting name="directory" value="test" />
+      <RunnerSettings RunnerId="Nodeunit.debug" />
+      <RunnerSettings RunnerId="Nodeunit.run" />
+      <ConfigurationWrapper RunnerId="Nodeunit.debug" />
+      <ConfigurationWrapper RunnerId="Nodeunit.run" />
       <method />
     </configuration>
-    <configuration default="false" name="Testing Landsat" type="NodeunitConfigurationType" factoryName="Nodeunit">
+    <configuration default="false" name="Testing news2landsat.js" type="NodeunitConfigurationType" factoryName="Nodeunit">
       <setting name="nodePath" value="C:/Program Files/nodejs/node" />
       <envs />
       <setting name="passParentEnvVars" value="true" />
@@ -631,19 +706,38 @@
       <setting name="testType" value="JS_FILE" />
       <setting name="jsFile" value="test/news2Landsat.js" />
       <RunnerSettings RunnerId="Nodeunit.debug" />
-      <RunnerSettings RunnerId="Nodeunit.run" />
       <ConfigurationWrapper RunnerId="Nodeunit.debug" />
-      <ConfigurationWrapper RunnerId="Nodeunit.run" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.news2landsat.js" />
-      <item index="1" class="java.lang.String" itemvalue="Nodeunit.Testing Landsat" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.news2Landsat.js" />
+    <configuration default="false" name="Testing boilerPipe.js" type="NodeunitConfigurationType" factoryName="Nodeunit">
+      <setting name="nodePath" value="C:/Program Files/nodejs/node" />
+      <envs />
+      <setting name="passParentEnvVars" value="true" />
+      <setting name="nodeunitModuleDir" value="$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="testType" value="JS_FILE" />
+      <setting name="jsFile" value="test/boilerPipe.js" />
+      <RunnerSettings RunnerId="Nodeunit.debug" />
+      <ConfigurationWrapper RunnerId="Nodeunit.debug" />
+      <method />
+    </configuration>
+    <list size="8">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.news2Landsat.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.getWebSemanticTree.js" />
+      <item index="2" class="java.lang.String" itemvalue="Nodeunit.Testing Landsat" />
+      <item index="3" class="java.lang.String" itemvalue="Nodeunit.Testing news2landsat.js" />
+      <item index="4" class="java.lang.String" itemvalue="Nodeunit.Testing boilerPipe.js" />
+      <item index="5" class="java.lang.String" itemvalue="Node.js.news2landsat.js" />
+      <item index="6" class="java.lang.String" itemvalue="Node.js.testPerso_BoilerPipeThenClavin.js" />
+      <item index="7" class="java.lang.String" itemvalue="Node.js.testPerso_AThenB.js" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.news2Landsat.js" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.testPerso_AThenB.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.testPerso_BoilerPipeThenClavin.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.news2landsat.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.getWebSemanticTree.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.news2Landsat.js" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
@@ -710,10 +804,10 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34254992" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34178612" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39477727" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34869432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -725,8 +819,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16439395" sideWeight="0.67281103" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32718894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19772728" sideWeight="0.6513057" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32565284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.54186416" order="7" side_tool="false" content_ui="combo" />
@@ -794,15 +888,115 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/qify.js</url>
+          <line>4</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/boilerPipe.js</url>
+          <line>11</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/qify.js</url>
+          <line>8</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/clavin.js</url>
+          <line>7</line>
+          <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/boilerPipe.js</url>
+          <line>8</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/boilerPipe.js</url>
+          <line>24</line>
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/clavin.js</url>
+          <line>10</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/clavin.js</url>
+          <line>26</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/annotate.js</url>
+          <line>6</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/annotate.js</url>
+          <line>25</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/annotate.js</url>
+          <line>21</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/news2landsat.js</url>
-          <line>65</line>
-          <option name="timeStamp" value="81" />
+          <line>19</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/clavin.js</url>
+          <line>12</line>
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/news2Landsat.js</url>
+          <line>5</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/news2landsat.js</url>
+          <line>11</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/news2landsat.js</url>
+          <line>34</line>
+          <option name="timeStamp" value="163" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/testPerso_AThenB.js</url>
+          <line>25</line>
+          <option name="timeStamp" value="176" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/testPerso_AThenB.js</url>
+          <line>30</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/testPerso_AThenB.js</url>
+          <line>35</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/testPerso_AThenB.js</url>
+          <line>63</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/testPerso_AThenB.js</url>
+          <line>61</line>
+          <option name="timeStamp" value="180" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="82" />
+      <option name="time" value="181" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -810,107 +1004,115 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/promise/core.js">
+    <entry file="file://$PROJECT_DIR$/src/httpReq.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="74" selection-end="81" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/promise/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/promise/lib/next-tick.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/q/q.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/q/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="35.307693" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="455" column="0" selection-start="12767" selection-end="12767" vertical-scroll-proportion="0.0">
+        <state line="1" column="27" selection-start="53" selection-end="53" vertical-scroll-proportion="0.029411765">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/fs.js">
+    <entry file="file://$PROJECT_DIR$/test/boilerPipe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="3519" selection-end="3519" vertical-scroll-proportion="0.0">
+        <state line="37" column="96" selection-start="1308" selection-end="1431" vertical-scroll-proportion="0.6764706">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/lib/utils.js">
+    <entry file="file://$PROJECT_DIR$/src/qify.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1594" selection-end="1594" vertical-scroll-proportion="0.0">
+        <state line="4" column="0" selection-start="80" selection-end="80" vertical-scroll-proportion="0.11764706">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/lib/core.js">
+    <entry file="file://$PROJECT_DIR$/src/testPerso_BoilerPipeThenClavin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="0" selection-start="4179" selection-end="4179" vertical-scroll-proportion="0.0">
+        <state line="8" column="23" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/deps/async.js">
+    <entry file="file://$PROJECT_DIR$/test/annotate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="0" selection-start="3976" selection-end="3976" vertical-scroll-proportion="0.0">
+        <state line="60" column="0" selection-start="2055" selection-end="2055" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/nodeunit-intellij-starter.js">
+    <entry file="file://$PROJECT_DIR$/src/annotate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="328" column="0" selection-start="11603" selection-end="11603" vertical-scroll-proportion="0.0">
+        <state line="21" column="8" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/assert.js">
+    <entry file="file://$PROJECT_DIR$/src/request.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="29" selection-start="2544" selection-end="2544" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/nodeunit/lib/assert.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="350" column="10" selection-start="11246" selection-end="11246" vertical-scroll-proportion="0.0">
+        <state line="35" column="41" selection-start="964" selection-end="964" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/news2Landsat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="130" selection-start="3698" selection-end="3698" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/news2landsat.iml">
+    <entry file="file://$PROJECT_DIR$/src/clavin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="17" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
+        <state line="26" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/boilerPipe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/q/q.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="50" selection-start="3397" selection-end="3397" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/news2landsat.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="27" selection-start="503" selection-end="503" vertical-scroll-proportion="0.29411766">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="35" column="19" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="498" column="0" selection-start="13959" selection-end="13959" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea12/system/extLibs/nodejs-v0.10.10-src/core-modules-sources/lib/timers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="0" selection-start="3567" selection-end="3567" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/testPerso_AThenB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="40" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.73740053">
+          <folding />
         </state>
       </provider>
     </entry>

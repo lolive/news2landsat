@@ -5,8 +5,10 @@ exports.proxyEnabled = true;
 exports.boilerpipeInputUrl = "http://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=text&extractImages=&url=";
 exports.clavinUrl = "http://clavin.berico.us/clavin-web/Services/GeoExtract/ResolvedLocations";
 
+exports.sparql2mapWidgetUrl = "http://localhost/sparql2mapWidget/GoogleEarth/index.xhtml";
+
 exports.urlStoreArticle = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/fr/";
-exports.urlUpdateWebSemanticTree = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/json/data_fr.json";
+exports.urlWebSemanticTree = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/json/data_fr.json";
 
 exports.logSitools = {
         id: "admin",

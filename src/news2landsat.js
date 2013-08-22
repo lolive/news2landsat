@@ -1,48 +1,43 @@
-/*  (C) 2012 Premist aka Minku Lee.
- LICENSE : https://github.com/premist/node-crossdomain-proxy/blob/master/LICENSE
- */
-
-/****************************************************************************
-* Includes																	*
-****************************************************************************/
-// NodeJS Modules
-var http = require('http');
-var url = require('url');
-
 // Personnal librairies
-var Q = require('q');
-var conf = require('./conf.js');
 var boilerPipe = require('./boilerPipe.js');
 var clavin = require('./clavin.js');
 var annotate = require('./annotate.js');
-var request = require('./request.js');
 var articleSI2 = require('./createArticle.js');
+var getTreeSI2 = require('./getWebSemanticTree.js');
+var updateTreeSI2 = require('./updateWebSemanticTree.js');
+var Q = require('q');
 
-exports.resolveLocations=clavin.resolveLocations;
-exports.annotateText = annotate.annotateText;
-exports.annotateLocation = annotate.annotateLocation;
+function toto() {
+    var defer = Q.defer();
+    whatToDoWithAnnotatedText(annotate.annotatedText);
+    defer.resolve();
+    return defer.promise
+}
 
-http.createServer(function (proxyReq, proxyResp) {
+function news2landsat(articleSrc, whatToDoWithAnnotatedText, whatToDoWithError) {
+              boilerPipe.callBoilerpipe(/*with url = */"http://linuxfr.org")
+    .then(function() {
+             clavin.callClavin(/*with text = */boilerPipe.article)
+    })
+//  .then(function() {
+//             annotate.annotateText(/*with geonames = */clavin.geonames, /*and article = */boilerPipe.article)
+//  })
+//  .then(function() {
+//             articleSI2.createSiToolsArticle(/*with article = */annotate.annotatedText)
+//  })
+//  .then(function() {
+//             getTreeSI2.getSiToolsTree(articleSI2.filename)
+//  })
+//  .then(function() {
+//             updateTreeSI2.updateSiToolsTree(articleSI2.filename, getTreeSI2.structure)
+//  })
+    .then(
+                      toto
+                  )
+    .done();
 
-    var params = url.parse(proxyReq.url, true);
-    var articleSrc = params.query.src;
+}
+exports.news2landsat = news2landsat;
+exports.boilerPipe = boilerPipe;
+exports.clavin = clavin;
 
-    function sendErrorBackToBrowser(e) {
-        console.log('An error occured: ' + e.message);
-        proxyResp.writeHead(503);
-        proxyResp.write("Error:" + e.message);
-        proxyResp.end();
-    }
-
-    function sendResultBackToBrowser(validCreation, articleText) {
-        console.log(articleText);
-		
-        proxyResp.setHeader("Content-Type", "text/html; charset=utf-8");
-        proxyResp.writeHead(200);
-        proxyResp.write(articleText);
-        proxyResp.end();
-    }
-
-    boilerPipe.articleContent(articleSrc).spread(clavin.resolveLocations).spread(annotate.annotateText).then(articleSI2.createSiToolsArticle).spread(sendResultBackToBrowser).fail(sendErrorBackToBrowser);
-
-}).listen(conf.port);

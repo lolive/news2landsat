@@ -1,12 +1,41 @@
-var Q = require('q');
+var Q= require('q');
 var conf = require('./conf.js');
 var request = require('./request.js');
+var ctx=this;
 
-exports.resolveLocations = function (articleText) {
-    var qq = Q.defer();
-    var callClavin = function callClavin(whatToDoWithClavinResult, whatToDoWithClavinError) {
-        request.sendHttpRequest(whatToDoWithClavinResult, whatToDoWithClavinError, "POST", conf.clavinUrl, articleText);
+
+function callClavin(articleText) {
+    var deferr = Q.defer();
+    var success = function(response){
+        ctx.locations = response.body;
+        /*then*/ deferr.resolve(response);};
+    var error =  function(e){
+        deferr.reject(e);
     }
-    callClavin(qq.resolve, qq.reject);
-    return qq.promise;
+
+    request.sendHttpRequest(
+        {
+            uri: conf.clavinUrl,
+            method: "POST",
+            body: articleText,
+            error: error,
+            success: success
+
+        }
+    );
+
+    return deferr.promise;
 }
+
+//function resolveLocations(articleText) {
+//    var qq = Q.defer();
+//    callClavin(qq.resolve, qq.reject, articleText);
+//    return qq.promise;
+//}
+
+//exports.resolveLocations = function(){
+//    var realArguments = arguments;
+//    return function(){
+//        callClavin.apply(this, realArguments)}
+//};
+exports.callClavin = callClavin;
