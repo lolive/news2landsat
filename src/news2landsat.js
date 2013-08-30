@@ -10,8 +10,8 @@ var servSparql = "sitools.akka.eu";
 var urlStoreArticle = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/fr/";
 var updateWebSemanticTree = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/json/data_fr.json";
 var logSitools = {
-	id: "admin",
-	pass: "sitoolsisthebest"
+    id: "admin",
+    pass: "sitoolsisthebest"
 }
 //var q = require('q');
 var port = process.env.port || 8185;
@@ -26,7 +26,7 @@ var proxyEnabled = true;
 
 var theProxy;
 if (proxyEnabled) {
-	theProxy = "http://OLIVIER.ROSSEL:7512OLRO*@proxy2.akka.eu:9090";
+    theProxy = "http://OLIVIER.ROSSEL:7512OLRO*@proxy2.akka.eu:9090";
 }
 
 function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, theUrl, postData) {
@@ -44,7 +44,7 @@ function sendHttpRequest(whatToDoWithResponse, whatToDoWithError, theMethod, the
         reqOptions.port = theParsedUrl.port;
         reqOptions.path = theParsedUrl.path;
         reqOptions.headers = {};
-	}
+    }
     if (postData)
         reqOptions.headers['Content-Length'] = postData.length;
 
@@ -91,6 +91,7 @@ exports.resolveLocations=resolveLocations;
 
 function annotateText(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
     return function (geonames, articleText) {
+        var title = getTitle(articleText);
         try {
             var annotatedText = articleText;
             if (geonames) {
@@ -98,13 +99,18 @@ function annotateText(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
                 if (locations.resolvedLocations) {
                     locations.resolvedLocations.forEach(function (resolvedLocation) {
                         var name = resolvedLocation.inputName;
+                        annotatedText = surroundWithUndescore(annotatedText, name);
+                    });
+                    
+                    locations.resolvedLocations.forEach(function (resolvedLocation) {
+                        var name = resolvedLocation.inputName;
                         var long = resolvedLocation.geoname.longitude;
                         var lat = resolvedLocation.geoname.latitude;
-                        annotatedText = annotateLocation(annotatedText, name, long, lat);
+                        annotatedText = annotateLocation(annotatedText, name, long, lat, title);
                     });
                 }
             }
-            return whatToDoWithAnnotatedText(annotatedText, geonames);
+            return whatToDoWithAnnotatedText(annotatedText, geonames, title);
         } catch (e) {
             whatToDoOnAnnotationError(e);
         }
@@ -112,13 +118,26 @@ function annotateText(whatToDoWithAnnotatedText, whatToDoOnAnnotationError) {
 }
 exports.annotateText = annotateText;
 
-function annotateLocation(text, name, long, lat) {
-
-    var replacementText = "$1<a href=\"http://sitools.akka.eu/sparql2mapWidget/GoogleEarth/index.xhtml?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+ "\">_" + "$2" + "_</a>$3";
-    var regexp = new RegExp("([^_]*)" + "("+name+")" + "([^_]*)", "gi");
+function annotateLocation(text, name, long, lat, textTitle) {
+    
+    var link = "http://sitools.akka.eu/sparql2mapWidget/GoogleEarth/index.xhtml?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+"&articleUrl="+urlStoreArticle+"&articleTitle=" + textTitle + ".html";
+    var replacementText = "<a href=\""+link+"\">" + "$&" + "</a>";
+    var regexp = new RegExp("_"+name+"_", "gi");
     return text.replace(regexp, replacementText);
 }
 exports.annotateLocation = annotateLocation;
+
+function surroundWithUndescore(text, name) {    
+    var replacementText = "_$&_";
+    var regexp = new RegExp(name, "gi");
+    return text.replace(regexp, replacementText);
+}
+
+function getTitle(text) {
+    var dt = new Date();
+    var title = text.substr(0, text.indexOf('\n')) + "_" + dt.toISOString(); 
+    return title.replace(/:/g,'_').replace('.','_');
+}
 
 http.createServer(function (proxyReq, proxyResp) {
 
@@ -133,85 +152,94 @@ http.createServer(function (proxyReq, proxyResp) {
         proxyResp.end();
     }
 
-    function sendResultBackToBrowser(text, geonames) {		
-		if (text.substr(0,6) != "<html>"){
-			var dt = new Date();		
-			var textTitle = text.substr(0, text.indexOf('\n')) + "_" + dt.toISOString();
-			var formattedText = "<html>\n<head>\n<title>" + textTitle + "</title>\n</head>\n<body>\n<p>" + text.replace(/\n/g, '</p>\n<p>') + "</p>\n</body>\n</html>";
-			var file = formattedText + "\n<!--url:" + articleSrc + "\ngeonames:" + geonames + "-->"
-			
-			request({
-				uri: urlStoreArticle + textTitle + ".html",
-				method: "PUT",
-				proxy: theProxy,
-				followAllRedirects: true,
-				body: file,
-				headers: {
-					'Content-Type': 'text/html',
-					'Content-Length': file.length,
-					'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
-					'Connection': 'keep-alive'
-				}
-			}, function(error, response, body) {
-				if (error)
-					sendErrorBackToBrowser(error);
-				else
-					request({
-						uri: updateWebSemanticTree,
-						method: "GET",
-						headers: {
-							'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
-						}
-					}, function(error, response, body) {
-						if (error)
-							sendErrorBackToBrowser(error);
-						else
-							var retBody = body.substr(1, body.length-1);
-							var newBody = JSON.parse(body);
-							var newArticle = {
-								text: textTitle,
-								leaf: true,
-								icon: "/sitools/common/res/images/icons/invalid.png",
-								sync: false,
-								link: "/fr/" + textTitle + ".html"
-							};
-							
-							for (var i = 0; i < newBody.length; i++) {
-								if (newBody[i].text == "Articles"){
-									newBody[i].children.push(newArticle);
-								}
-							}
-
-							request({
-								uri: updateWebSemanticTree,
-								method: "PUT",
-								followAllRedirects: true,
-								json: newBody,
-								headers: {
-									'Content-Type': 'text/json',
-									'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
-									'Connection': 'keep-alive'
-								}
-							}, function(error, response, body) {
-								if (error)
-									sendErrorBackToBrowser(error);
-							});
-					});
-			});
-			
-			proxyResp.setHeader("Content-Type", "text/html; charset=utf-8");
-			proxyResp.writeHead(200);
-			proxyResp.write(formattedText);
-			proxyResp.end();
-		}
+    function sendResultBackToBrowser(text, geonames, textTitle) {       
+        if (text.substr(0,6) != "<html>"){
+            var formattedText = "<html>\n<head>\n<title>" + textTitle + "</title>\n</head>\n<body>\n<p>" + text.replace(/\n/g, '</p>\n<p>') + "</p>\n</body>\n</html>";
+            var file = formattedText + "\n<!--url:" + articleSrc + "\ngeonames:" + geonames + "-->"
+            request({
+                uri: urlStoreArticle + textTitle + ".html",
+                method: "PUT",
+//              proxy: theProxy,
+                followAllRedirects: true,
+                body: file,
+                headers: {
+                    'Content-Type': 'text/html',
+                    'Content-Length': file.length,
+                    'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
+                    'Connection': 'keep-alive'
+                }
+            }, function(error, response, body) {
+                if (error)
+                    sendErrorBackToBrowser(error);
+                else
+                    request({
+                        uri: updateWebSemanticTree,
+                        method: "GET",
+                        headers: {
+                            'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
+                        }
+                    }, function(error, response, body) {
+                        if (error)
+                            sendErrorBackToBrowser(error);
+                        else
+                            var retBody = body.substr(1, body.length-1);
+                            var newBody = JSON.parse(body);
+                            var newArticle = {
+                                text: textTitle,
+                                leaf: true,
+                                icon: "/sitools/common/res/images/icons/invalid.png",
+                                sync: false,
+                                link: "/fr/" + encodeURIComponent(textTitle) + ".html"
+                            };
+                            //the json return is an array with only one child, the real childs are below
+                            var children = newBody[0].children;
+                            var articles;
+                            for (var i = 0; i < children.length; i++) {
+                                if (children[i].text == "Articles"){
+                                    articles = children[i];
+                                }
+                            }
+                            
+                            if(articles == undefined) {
+                                articles = {
+                                    text : "Articles",
+                                    leaf : false,
+                                    children : []
+                                }
+                                children.push(articles);
+                            }
+                            articles.children.push(newArticle);
+                            
+                            request({
+                                uri: updateWebSemanticTree,
+                                method: "PUT",
+                                followAllRedirects: true,
+                                json: newBody,
+                                headers: {
+                                    'Content-Type': 'text/json',
+                                    'Authorization': 'Basic ' + new Buffer(logSitools.id + ':' + logSitools.pass).toString('base64'),
+                                    'Connection': 'keep-alive'
+                                }
+                            }, function(error, response, body) {
+                                if (error)
+                                    sendErrorBackToBrowser(error);
+                            });
+                    });
+            });
+            
+            proxyResp.setHeader("Content-Type", "text/html; charset=utf-8");
+            proxyResp.writeHead(200);
+            proxyResp.write(formattedText);
+            proxyResp.end();
+        }
     }
-	
+    
     var toHtml = annotateText(sendResultBackToBrowser, sendErrorBackToBrowser);
     var toLocations = resolveLocations(toHtml, sendErrorBackToBrowser);
     var toArticle = articleContent(toLocations, sendErrorBackToBrowser);
-	
+    
     var articleToHtml = toArticle(articleSrc);
-	
+    
 //    var destParams = url.parse(URL);
 //
 //    var reqOptions = {
