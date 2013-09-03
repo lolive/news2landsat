@@ -120,7 +120,7 @@ exports.annotateText = annotateText;
 
 function annotateLocation(text, name, long, lat, textTitle) {
     
-    var link = "http://sitools.akka.eu/sparql2mapWidget/GoogleEarth/index.xhtml?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+"&articleUrl="+urlStoreArticle+"&articleTitle=" + textTitle + ".html";
+    var link = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/demo/sparql2mapWidget/flickrRibbon/sparql2kml2googleEarth.html?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+"&articleUrl="+urlStoreArticle+"&articleTitle=" + textTitle + ".html";
     var replacementText = "<a href=\""+link+"\">" + "$&" + "</a>";
     var regexp = new RegExp("_"+name+"_", "gi");
     return text.replace(regexp, replacementText);
@@ -192,7 +192,7 @@ http.createServer(function (proxyReq, proxyResp) {
                                 link: "/fr/" + encodeURIComponent(textTitle) + ".html"
                             };
                             //the json return is an array with only one child, the real childs are below
-                            var children = newBody[0].children;
+                            var children = newBody;
                             var articles;
                             for (var i = 0; i < children.length; i++) {
                                 if (children[i].text == "Articles"){
