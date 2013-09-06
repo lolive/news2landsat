@@ -122,6 +122,7 @@ function annotateLocation(text, name, long, lat, textTitle) {
     
     var resource = "http://sitools.akka.eu/landsatrdf/details/"+encodeURIComponent(name)+"/forArticle/"+encodeURIComponent(textTitle);
     var link = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/demo/sparql2mapWidget/flickrRibbon/sparql2kml2googleEarth.html?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+"&articleUrl="+urlStoreArticle+"&resource="+resource+"&articleTitle=" + textTitle + ".html";
+    var replacementText = "<a href=\""+link+"\" property=\"http://sitools.akka.eu/landsatrdf/annotatedBy\" resource=\""+resource+"\" title=\"URI = "+"http://sitools.akka.eu/landsatrdf/details/"+encodeURIComponent(name)+"/forArticle/"+encodeURIComponent(textTitle)+"\" target=\"_newtab\">" + "$&" + "</a>";
     var regexp = new RegExp("_"+name+"_", "gi");
     return text.replace(regexp, replacementText);
 }
@@ -154,7 +155,7 @@ http.createServer(function (proxyReq, proxyResp) {
 
     function sendResultBackToBrowser(text, geonames, textTitle) {       
         if (text.substr(0,6) != "<html>"){
-            var formattedText = "<html>\n<head>\n<title>" + textTitle + "</title>\n</head>\n<body>\n<p>" + text.replace(/\n/g, '</p>\n<p>') + "</p>\n</body>\n</html>";
+            var formattedText = "<html>\n<head>\n<title>" + textTitle + "</title>\n</head>\n<body about='"+articleSrc+"'>\n<p>" + text.replace(/\n/g, '</p>\n<p>') + "</p>\n</body>\n</html>";
             var file = formattedText + "\n<!--url:" + articleSrc + "\ngeonames:" + geonames + "-->"
             request({
                 uri: urlStoreArticle + textTitle + ".html",
