@@ -136,8 +136,9 @@ function surroundWithUndescore(text, name) {
 
 function getTitle(text) {
     var dt = new Date();
-    var title = text.substr(0, text.indexOf('\n')) + "_" + dt.toISOString(); 
-    return title.replace(/:/g,'_').replace('.','_');
+//    var title = text.substr(0, text.indexOf('\n')) + "_" + dt.toISOString(); 
+    var title = text.substr(0, text.indexOf('\n')); 
+    return title.replace(/:/g,'_').replace('.','_').replace(' ','_');
 }
 
 http.createServer(function (proxyReq, proxyResp) {
