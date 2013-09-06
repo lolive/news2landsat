@@ -120,8 +120,8 @@ exports.annotateText = annotateText;
 
 function annotateLocation(text, name, long, lat, textTitle) {
     
-    var link = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/demo/sparql2mapWidget/flickrRibbon/sparql2kml2googleEarth.html?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+"&articleUrl="+urlStoreArticle+"&articleTitle=" + textTitle + ".html";
-    var replacementText = "<a href=\""+link+"\">" + "$&" + "</a>";
+    var resource = "http://sitools.akka.eu/landsatrdf/details/"+encodeURIComponent(name)+"/forArticle/"+encodeURIComponent(textTitle);
+    var link = "http://sitools.akka.eu:8183/sitools/datastorage/user/semantic-storage/demo/sparql2mapWidget/flickrRibbon/sparql2kml2googleEarth.html?long=" + long + "&lat=" + lat + "&name=" +encodeURIComponent(name)+"&articleUrl="+urlStoreArticle+"&resource="+resource+"&articleTitle=" + textTitle + ".html";
     var regexp = new RegExp("_"+name+"_", "gi");
     return text.replace(regexp, replacementText);
 }
